@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+
+<script>
+let x = 0;
+if (x != 0) {
+console.log ('Вірно');
+}
+else {
+console.log ('Невірно');}
+
+let x = 5;
+x!=0 ? console.log ('Вірно'):console.log ('Невірно');
+
+
+
+
+let time = 59;
+<!--if (0>=time<15) {-->
+if (time>=0 && time<15) {
+console.log ('Перша частина години');}
+else if (time>=15 && time<30) {
+console.log ('Друга частина години');}
+else if (time>=30 && time<45) {
+console.log ('Третя частина години');}
+else if (time>=45 && time<60) {
+console.log ('Четверта частина години');}
+
+let day = 21;
+if (day>=1 && day<11) {
+console.log ('Перша декада');}
+else if (day>=11 && day<21) {
+console.log ('Друга декада');}
+else if (day>=21 && day<=31) {
+console.log ('Третя декада');}
+
+let day = prompt ('Оберіть порядковий номер дня тижня');
+switch (day) {
+case '1': console.log ('monday');break;
+case '2': console.log ('tuesday');break;
+case '3': console.log ('wednesday');break;
+case '4': console.log ('thursday');break;
+case '5': console.log ('friday');break;
+case '6': console.log ('saturday');break;
+case '7': console.log ('sunday');break;}
+
+let number1 = prompt ('введіть перше число');
+let number2 = prompt ('введіть друге число');
+if (number1>=number2) {
+console.log ('максимальне число: '+ number1);}
+else {
+console.log ('максимальне число: '+ number2);}
+
+let number1 = prompt ('введіть перше число');
+let number2 = prompt ('введіть друге число');
+if (number1>number2) {
+console.log ('максимальне число: '+ number1);}
+else if (number1<number2) {
+console.log ('максимальне число: '+ number2);}
+else if (number1=number2) {
+console.log ('числа рівні');}
+
+
+
+
+</script>
+
+</body>
+</html>

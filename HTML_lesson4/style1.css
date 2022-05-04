@@ -1,0 +1,51 @@
+body {margin: 0px;}
+
+
+.main {
+width:100vw;
+height: 100vh;
+
+}
+.A {background: silver;
+width:100%;
+height: 33.3%;
+margin: 5px
+}
+.B-H {
+width:100%;
+height: 66.7%;
+display: flex;
+flex-direction: row;
+}
+.B-G {
+width:75%;
+height: 66.7%;
+display: flex;
+flex-direction: column;
+}
+.B-D-and-E-F {
+width:100%;
+height: 50%;
+display: flex;
+flex-direction: row;margin: 5px
+}
+.B {background: silver;
+width:33.3%;
+height: 100%;
+margin: 5px
+}
+.H {background: silver;
+width:25%;
+height: 66.7%;
+margin: 10px
+}
+@media screen and (max-width: 500px) {
+.A {height: 20%;}
+.B-H {height: 80%;
+flex-direction: column;}
+.B-G {width:100%;height: 50%;
+}
+.B-D-and-E-F {width:100%;
+height: 50%;}
+.H {width: 100%;height: 50%;}
+}

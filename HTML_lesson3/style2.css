@@ -1,0 +1,55 @@
+body {margin: 0;}
+
+.main {
+width:500px;
+height: 350px;
+display: flex;
+flex-direction: column;
+background: #f3e5e5;
+}
+.panel{
+width:500px;
+height: 40px;
+display: flex;
+justify-content: space-between;
+margin-top:10px;
+
+}
+.pan1 {
+width:60px;
+height: 30px;
+background: #434d7e;
+border-radius: 10%;
+margin-left:50px;
+}
+.pan2 {
+margin-right:50px;
+}
+i{
+background: #d5b6d7;
+display:block;
+margin: 7.5px;
+}
+.bluebox{
+width:500px;
+height: 200px;
+background: #434d7e;
+position: relative;
+}
+.purple{
+width:260px;
+height: 80px;
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+position:absolute;
+right: 130px;
+bottom: -40px;
+}
+.square {
+width:80px;
+height: 80px;
+border-radius: 10%;
+background: purple;
+margin: 0px;
+}

@@ -1,0 +1,97 @@
+body {margin: 0;}
+
+.main {
+
+width:800px;
+height: 400px;
+display: flex;
+}
+.card {
+margin:20px;
+width:200px;
+height: 250px;
+box-sizing: border-box;
+border: 2px solid silver;
+position: relative;
+text-align: center;
+}
+.icon{
+background: white;
+width:40px;
+height: 40px;
+border: 2px solid silver;
+border-radius: 50%;
+position: absolute;
+right: 75px;
+top: -20px;
+display: flex;
+justify-content: center;
+align-items: center;
+}
+i{
+color: orange;
+}
+h1{
+margin: 40px;
+margin-bottom: 0;
+font-size: 22px;
+/*text-align: center;*/
+}
+.text{
+margin: 10px;
+margin-bottom: 0;
+padding: 10px;
+color: gray;
+}
+.link{
+border: 2px solid black;
+/*text-align: center;*/
+margin: 10px;
+}
+
+
+/*
+flex-wrap: wrap;
+
+justify-content: center;
+align-items: center;
+}
+.box {
+background: white;
+width:240px;
+height: 75px;
+display: flex;
+margin: 20px;
+
+}
+.pict {
+width:60px;
+height: 75px;
+
+
+}
+.text {
+width:180px;
+height: 75px;
+}
+h1{
+margin: 5px;
+font-size:20px;
+color: orange;
+}
+p {
+margin: 2px;
+font-size:10px;
+color: gray;
+}
+.fa-arrows-to-circle{
+text-align: center;
+display: block;
+font-size:30px;
+color: silver;
+width:60px;
+height: 75px
+
+
+
+}
