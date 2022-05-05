@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+</head>
+<body>
+<script>
+
+    //     - створити функцію яка приймає масив чисел та повертає середнє арифметичне його значень.
+    let arithMean = (array) => {
+        let sum=0;
+        for (const arrayElement of array) {
+        sum=sum+arrayElement;
+        }
+    return (sum/(array.length));
+    }
+//console.log (arithMean([1,2,3,4]));
+
+    //   - створити функцію яка приймає будь-яку кількість чисел, повертає найменьше, а виводить найбільше (Math використовувати заборонено);
+    let arrayMinMax = (array) => {
+        let min = array[0];
+        for (let arrayElement of array) {
+            if (min > arrayElement) {
+                min = arrayElement;
+            }
+        }
+        let max = array[0];
+        for (let arrayElement of array) {
+            if (max < arrayElement) {
+                max = arrayElement;
+            }
+        }
+        document.write(`${max}`);
+        return min;
+
+    }
+    // arrayMinMax ([-20,8,-15,15,48,24,2]);
+    // console.log (arrayMinMax([1,2,3,4]));
+
+    // - створити функцію яка заповнює масив рандомними числами
+    // (цей код генерує рандомні числа (одне число!!!) в діапазоні від 0 до 100 - Math.round(Math.random()*100)) та виводить його.
+    let arrayRandom100 = (n) => {
+        let array = [];
+        for (let i = 0; i < n; i++) {
+            array[i]=Math.round(Math.random()*100);
+        }
+        return array;
+    }
+    // console.log(arrayRandom100(10));
+
+    // - створити функцію яка заповнює масив рандомними числами в діапазоні від 0 до limit. limit - аргумент, який характеризує кінцеве значення діапазону.
+    let arrayRandom = (n,limit) => {
+        let array = [];
+        for (let i = 0; i < n; i++) {
+            array[i]=Math.round(Math.random()*limit);
+        }
+        return array;
+    }
+    // console.log(arrayRandom(10,10));
+
+    // - Функція приймає масив та робить з нього новий масив в зворотньому порядку. [1,2,3] -> [3, 2, 1].
+    let arrayRevers = (array) => {
+        let arr = [];
+        for (let i = array.length - 1; i >= 0; i--) {
+            arr[(array.length-1-i)]=array[i];
+        }
+    return arr;
+    }
+    // console.log(arrayRevers([1,2,3]));
+
+    //     Переробити на стрілочні функції з попереднього дз
+    // - створити функцію яка обчислює та повертає площу прямокутника зі сторонами а і б
+
+    let squareRect = (a,b) => a*b;
+    //  document.write (squareRect(5,5));
+
+    // - створити функцію яка обчислює та повертає площу кола з радіусом r
+    let squareCircle = (r) => Math.PI*r*r;
+    // document.write (squareCircle(5));
+
+    // - створити функцію яка обчислює та повертає площу циліндру висотою h, та радіутом r
+    let squareCylinder = (h,r) => 2 * Math.PI * r * r + 2 * Math.PI * r * h;
+    // document.write (squareCylinder(5,5));
+
+    // - створити функцію яка приймає масив та виводить кожен його елемент
+    let arrayItem = (...a) => {
+        for (let item of a) {
+            document.write(`${item}`+' ');
+        }
+    }
+    // arrayItem (1,2,45,78);
+
+    // - створити функцію яка створює параграф з текстом. Текст задати через аргумент
+    let textPar = (text) => document.write(`<p>${text}</p>`);
+    // textPar ('aasasas');
+
+    // - створити функцію яка створює ul з трьома елементами li. Текст li задати через аргумент всім однаковий
+    let listThree = (text) =>
+        document.write (`<ul><li>${text}</li><li>${text}</li><li>${text}</li></ul>`);
+    // listThree ('qwqwqw');
+
+    // - створити функцію яка створює ul з трьома елементами li. Текст li задати через аргумент всім однаковий. Кількість li визначається другим аргументом, який є числовим (тут використовувати цикл)
+    let listAnyQuant = (text,n) => {
+        document.write ('<ul>');
+        for (let i = 0; i < n; i++) {
+            document.write(`<li>${text}</li>`);
+        }
+        document.write ('</ul>');
+    }
+    // listAnyQuant ('qwqwqw',5);
+
+    // - створити функцію яка приймає масив примітивних елементів (числа,стрінги,булеві), та будує для них список
+    let arrayList = (...a) => {
+        document.write ('<ul>');
+        for (let item of a) {
+            document.write(`<li>${item}</li>`);
+        }
+        document.write ('</ul>');
+    }
+    // arrayList (1,2, 'jhjh', 'njjn',5>6);
+
+    // - створити функцію яка приймає масив об'єктів з наступними полями id,name,age , та виводить їх в документ. Для кожного об'єкту окремий блок.
+    let arrayObjects= (objects) => {
+        for (let object of objects) {
+            let n='';
+            for (let objectKey in object) {
+                n= `${n} ${objectKey} ${object[objectKey]}`;
+            }
+            document.write (`<div> ${n} </div>`);
+        }
+    }
+    // arrayObjects(
+    //     [{id: '1234', name: 'Olya', age: 18},
+    //      {id: '1235', name: 'Kolya', age: 19},
+    //      {id: '1235', name: 'Kolya', age: 19}]);
+
+    // - створити функцію яка повертає найменьше число з масиву
+    let arrayMin= (arr) => {
+        let n=arr[0];
+        for (let arrElement of arr) {
+            if (n>arrElement) {
+                n=arrElement;
+            }
+        }
+        return n;
+    }
+    // console.log(arrayMin([-20,2,-2,10,0,15,-18]));
+
+    // - створити функцію яка приймає масив чисел, сумує значення елементів масиву та повертає його. Приклад [1,2,10]->13
+    let  arraySum = (arr) => {
+        let n=0;
+        for (let arrElement of arr) {
+            n=n+arrElement;
+        }
+        return n;
+    }
+    // console.log(arraySum([1,2,3,4]));
+
+    // -створити функцію, яка приймає масив з 2х об'єктів, та міняє їх місцями.
+let arrayChange = (array)=> {
+    let arr =[];
+    arr[0]= array[1];
+    arr[1]= array[0];
+    return [arr];}
+
+    // console.log (arrayChange([10,20]));
+
+</script>
+</body>
+</html>
