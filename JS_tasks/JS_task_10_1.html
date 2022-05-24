@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+    div {width: 50px; height: 50px; border: 4px solid indianred}
+    table {border: 0.5px solid black; border-collapse: collapse;}
+    td {border: 0.5px solid black}
+</style>
+<body>
+<div id="text"></div>
+
+<script>
+    /*- Создать произвольный елемент с id = text.  Используя JavaScript, сделайте так,
+        чтобы при клике на кнопку исчез элемент с id="text".*/
+    const b = document.createElement('button');
+    b.innerText = 'Disappear';
+    document.body.appendChild(b);
+    const text = document.getElementById('text');
+    b.onclick = ()=>{text.remove()};
+</script>
+<br>
+<label>
+    <input type = "text" name = "age">
+</label>
+<button id="but2">Ok</button>
+<script>
+    /*- створити інпут який приймає вік людини та кнопку яка підтверджує дію.При натисканні на кнопку
+        зчитати інформацію з інпуту та перевірити вік чи меньше він ніж 18, та повідомити про це користувача*/
+    const inp = document.getElementsByTagName('input')[0];
+    const but = document.getElementById('but2');
+    let x;
+    but.onclick = () => {
+                if (inp.value < 18) {
+                x = 'ваш вік менше 18'}
+                else {
+                x = 'ваш вік більше 18'}
+            let answer = document.createElement('div');
+            answer.innerText = x;
+            document.body.appendChild(answer);
+        }
+</script>
+<form action="" name = "f1">
+    <input type="text" name = "fieldOne">
+    <input type="text" name = "fieldTwo">
+</form>
+<button id = "three"> info </button>
+<script>
+    /*- створити 2 форми  по 2 інпути в кожній. ствоирити кнопку при кліку на яку считується та виводиться
+    на консоль інформація з цих 2х форм.
+        Кнопка повинна лежати за межами форм (Щоб ьуникнути  перезавантаження сторінки)
+    Доступ до інпутів через Forms API. Отже дайте формі та інпутам всі необхідні атрибути.*/
+    const butThree = document.getElementById('three');
+    butThree.onclick = ()=> {
+        console.log(document.forms.f1.fieldOne.value);
+        console.log(document.forms.f1.fieldTwo.value);
+    }
+</script>
+<br>
+<input id = "inp1">
+<input id = "inp2">
+<input id = "inp3">
+<button id = "tabl"> Tabl </button>
+<script>
+    /*- Створити 3 инпута та кнопку. Один визначає кількість рядків, другий - кількість ячеєк, третій вмиіст ячеєк.
+        При натисканні кнопки, вся ця інформація зчитується і формується табличка, з відповідним вмістом.
+    (Додатковачастина для завдання)*/
+    const but4 = document.getElementById('tabl');
+    const tr = document.getElementById('inp1');
+    const td = document.getElementById('inp2');
+    const inner = document.getElementById('inp3');
+    // console.log()
+    but4.onclick = function () {
+        const table = document.createElement('table');
+        const tbody = document.createElement('tbody');
+        table.appendChild(tbody);
+        document.body.appendChild(table);
+        for (let i = 0; i < tr.value; i++) {
+            const x = document.createElement('tr');
+            tbody.appendChild(x);
+            for (let j = 0; j < td.value; j++) {
+                const y = document.createElement('td');
+                y.innerText =inner.value;
+                x.appendChild(y);
+            }
+        }
+    }
+
+</script>
+
+
+
+</body>
+</html>
