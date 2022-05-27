@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div {
+            border: 1px solid darkgrey;
+            margin: 10px
+        }
+
+        img {
+            width: 100px
+        }
+    </style>
+</head>
+<body>
+<script>
+    // На сторінці  list.html побудувати кнопку яка видаляє всі товари з корзини та локалстораджа.
+    //     До кожного товару додати кнопку, при кліку на яку з лс видаляється конкретний обраний  товар
+    const arrProd = JSON.parse(localStorage.getItem('prod'));
+    arrProd.forEach((item) => {
+        const productDiv = document.createElement('div');
+        const productBut = document.createElement('button');
+        productBut.innerText = 'Del';
+        productBut.setAttribute('id',item.name);
+        productDiv.appendChild(productBut);
+        for (const itemKey in item) {
+            if (itemKey === 'img') {
+                let productImg = document.createElement('img');
+                productImg.src = item[itemKey];
+                productDiv.appendChild(productImg)
+            } else {
+                let productP = document.createElement('p')
+                productP.innerText = itemKey + ': ' + item[itemKey];
+                productDiv.appendChild(productP);
+            }
+        }
+        document.body.appendChild(productDiv);
+    })
+
+    //щоб кнопка видаляла товар -
+    /*const button = document.getElementsByTagName('button');
+    for (const buttonElement of button) {
+        buttonElement.onclick = function () {
+            const del = this.closest("div");
+            del.remove();
+        }
+    }*/
+    // щоб кнопка видаляла товар з LS -
+    const button = document.getElementsByTagName('button');
+    for (const buttonElement of button) {
+        buttonElement.onclick = function (){
+            const newLSProd = arrProd.filter (el=>el.name!==buttonElement.id);
+            localStorage.setItem('prod', JSON.stringify(newLSProd))
+            }
+    }
+
+
+    //щоб кнопка видаляла все
+    const delAll = document.createElement('button')
+    delAll.setAttribute('id', 'delAll');
+    delAll.innerText = 'Delete All';
+    document.body.appendChild(delAll);
+    delAll.onclick = function () {
+        const a = document.getElementsByTagName('div');
+        // console.log(a)
+        for (let i = a.length - 1; i >= 0; i--) {
+            a[i].remove();
+        }
+        document.getElementById('delAll').remove();
+        localStorage.clear();
+    }
+
+
+</script>
+</body>
+</html>

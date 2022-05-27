@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<form name="products">
+    <label>
+        <input name="name">найменування</input>
+    </label>
+    <label>
+        <input name="quantity">кількість</input>
+    </label>
+    <label>
+        <input name="price">ціна</input>
+    </label>
+    <label>
+        <input name="img">зображення</input>
+    </label>
+    <button>зберігти</button>
+</form>
+<a href='list.html' target="_blank"> На сторінку товарів</a>
+<script>
+    // - Імітуємо наповнення інтернет магазину товарами :
+    //     Створити форму з наступними полями :
+    //     - назва товару
+    // - кількість товару
+    // - ціна товару
+    // - картинка товару (посилання з інтернету)
+    // Зберігати товари в масив в локалсорадж. При збережені товару з форми, action не повинно відбуватись (preventDefault)
+    // створити елемент <a href='list.html'> На сторінку товарів</a>, та list.html, при переході на який відобразити на
+    // сторінці всі товари.
+    // На сторінці  list.html побудувати кнопку яка видаляє всі товари з корзини та локалстораджа.
+    //     До кожного товару додати кнопку, при кліку на яку з лс видаляється конкретний обраний  товар
+const f = document.forms.products;
+// const {name, quantity, price, img } = document.forms.products;
+f.onsubmit = function (e) {
+    e.preventDefault();
+    let prodObj = {name: f.name.value, quantity: f.quantity.value, price: f.price.value, img: f.img.value };
+    let arrProd = JSON.parse(localStorage.getItem('prod')) || [];
+    arrProd.push(prodObj);
+    localStorage.setItem('prod',JSON.stringify(arrProd))
+}
+
+
+</script>
+</body>
+</html>
