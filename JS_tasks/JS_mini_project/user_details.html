@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>user details</title>
+    <style>
+        body {
+            margin: 0;
+            text-align: center;
+        }
+
+        .userInfoBlock, .mainTitleBlock {
+            box-sizing: border-box;
+            border: 1px solid grey;
+            background: #f3e5e5;
+            font-size: 25px;
+            /*width: 90%;*/
+            margin: 10px;
+        }
+
+        .mainTitleBlock {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-evenly;
+            margin: 10px;
+        }
+
+        .titleButton {
+            width: 90%;
+            height: 40px;
+            margin: 10px;
+            font-size: 15px;
+        }
+
+        .titleBlocks {
+            /*flex-direction: column;*/
+            background: #d5b6d7;
+            box-sizing: border-box;
+            border: 1px solid grey;
+            width: 19%;
+            margin: 10px 0;
+            font-size: 20px;
+        }
+
+        p {
+            margin: 10px
+        }
+
+        a {
+            text-decoration: none
+        }
+
+
+    </style>
+</head>
+<body>
+
+<!--На странице user-details.html:-->
+<!--4 Вывести всю, без исключения, информацию про объект user на кнопку/ссылку которого был совершен клик ранее.-->
+<!--5 Добавить кнопку "post of current user", при клике на которую, появляются title всех постов текущего юзера-->
+<!--(для получения постов используйте эндпоинт https://jsonplaceholder.typicode.com/users/USER_ID/posts)-->
+<!--6 Каждому посту добавить кнопку/ссылку, при клике на которую происходит переход на страницу post-details.html, которая имеет детальную информацию про текущий пост.-->
+<!--Стилизация проекта - -->
+<!--user-details.html - блок с информацией про user вверху страницы. Кнопка ниже, на 90% ширины страницы, по центру.-->
+<!--блоки с краткой информацией про post - в ряд по 5 объектов.-->
+
+<script>
+    const userInfoBlock = document.createElement('div');
+    userInfoBlock.classList.add('userInfoBlock');
+    document.body.appendChild(userInfoBlock);
+    const userInfo = JSON.parse(localStorage.getItem('key'));
+    for (const key in userInfo) {
+        if (typeof userInfo[key] !== "object") {
+            const user = document.createElement('div');
+            user.innerHTML = `<b>${key}: ${userInfo[key]}</b>`
+            userInfoBlock.appendChild(user);
+        } else {
+            const q2 = document.createElement('div');
+            q2.innerHTML = `<b>${key}:</b>`;
+            userInfoBlock.appendChild(q2);
+            for (const key2 in userInfo[key]) {
+                if (typeof userInfo[key][key2] !== "object") {
+                    // q2.innerHTML = ` ${q2.innerHTML} <i> ${key2}: ${userInfo[key][key2]}</i>`;
+                    q2.innerHTML = q2.innerHTML + ' <i> ' + key2 + ': ' + userInfo[key][key2] + ' </i>';
+
+                } else {
+                    const q3 = document.createElement('div');
+                    q3.innerHTML = `<b>${key2}:</b>`;
+                    userInfoBlock.appendChild(q3);
+                    for (const key3 in userInfo[key][key2]) {
+                        // const user = document.createElement('div');
+                        // const user = document.getItemElementsByTagName('div');
+                        q3.innerHTML = ' <i>' + q3.innerHTML + key3 + ': ' + userInfo[key][key2][key3] + ' </i>';
+                    }
+                }
+            }
+        }
+    }
+    const id = JSON.parse(localStorage.getItem('key')).id;
+    // console.log(id);
+
+    const titleButton = document.createElement('button');
+    titleButton.classList.add('titleButton');
+    titleButton.innerHTML = '<b>post of current user</b>';
+    userInfoBlock.appendChild(titleButton);
+    fetch(`https://jsonplaceholder.typicode.com/users/${id}/posts`)
+        .then(response => response.json())
+        .then(value => {
+
+            titleButton.onclick = () => {
+                const mainTitleBlock = document.createElement('div');
+                mainTitleBlock.classList.add('mainTitleBlock');
+                document.body.appendChild(mainTitleBlock);
+                for (const element of value) {
+                    const titleBlocks = document.createElement('div');
+                    titleBlocks.classList.add('titleBlocks');
+                    titleBlocks.innerHTML = `<p>${element.title}</p>`;
+                    mainTitleBlock.appendChild(titleBlocks);
+                    const titlesButtons = document.createElement('button');
+                    // titlesButtons.classList.add('titlesButtons');
+                    titleBlocks.appendChild(titlesButtons);
+                    const a = document.createElement('a');
+                    a.setAttribute('href', 'post-details.html');
+                    a.setAttribute('target', '_blank');
+                    a.innerText = 'post-details'
+                    titlesButtons.appendChild(a);
+                    titlesButtons.classList.add('titlesButtons')
+                    titlesButtons.onclick = () => localStorage.setItem('key', JSON.stringify(element));
+                    titleButton.style.pointerEvents = 'none';
+                }
+            }
+        })
+
+
+</script>
+</body>
+</html>
